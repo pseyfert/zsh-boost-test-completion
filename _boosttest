@@ -59,7 +59,7 @@ _boost_test_list_content () {
 _boost_test_logger() {
   (( commas=${#${words[$CURRENT]//[^,]}} ))
   (( remainder=$commas % 3 ))
-  (( $commas >= 3 )) && _message "may stop now"
+  (( $commas >= 3 && $remainder == 0 )) && _message "may stop now"
   (( $commas >= 1 )) && compset -P '*,'
   case $remainder in
     0)
