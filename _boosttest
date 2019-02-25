@@ -1,0 +1,159 @@
+#compdef -P -value-,BOOST_TEST_*,-default-
+
+# zsh completion script for boost unit tests
+
+# Copyright CERN for the benefit of the LHCb collaboration 2019
+# Distributed under the Boost Software License, Version 1.0.
+#    (See accompanying file LICENSE_1_0.txt or copy at
+#          http://www.boost.org/LICENSE_1_0.txt)
+#
+# In applying this licence, CERN does not waive the privileges and immunities
+# granted to it by virtue of its status as an Intergovernmental Organization
+# or submit itself to any jurisdiction.
+
+
+if [[ "$service" = -value-* ]]; then
+  var=${service:l}
+  local retval
+  _call_funtion retval ${var}
+  return
+fi
+
+_booleans() {
+  local -a booleans; booleans=('True' 'False')
+  _describe -t booleans 'boolean' booleans
+}
+
+_boost_test_catch_system_errors() { _booleans }
+_boost_test_color_output() { _booleans }
+_boost_test_auto_start_dbg() { _booleans }
+_boost_test_build_info() { _booleans }
+_boost_test_detect_fp_exceptions() { _booleans }
+_boost_test_list_labels() { _booleans }
+_boost_test_result_code() { _booleans }
+_boost_test_save_pattern() { _booleans }
+_boost_test_show_progress() { _booleans }
+_boost_test_use_alt_stack() { _booleans }
+_boost_test_version() { _booleans }
+_boost_test_wait_for_debugger() { _booleans }
+_boost_test_usage() { _booleans }
+
+_arguments \
+  "(--no_catch_system_errors --catch_system_errors -s)"{--no_catch_system_errors=,--catch_system_errors=,-s}"[Allows to switch between catching and ignoring system errors (signals).]:boolean value:_boost_test_catch_system_errors"
+  "(--color_output --no_color_output -x)"{--color_output=,--no_color_output=,-x}"[Enables color output of the framework log and report messages.]:boolean value:_boost_test_color_output"
+  "(--auto_start_dbg -d)"{--auto_start_dbg=,-d}"[Automatically attaches debugger in case of system level failure (signal).]:boolean value:_boost_test_auto_start_dbg"
+  "(--build_info -i)"{--build_info=,-i}"[Displays library build information.]:boolean value:_boost_test_build_info"
+  "(--detect_fp_exceptions --no_detect_fp_exceptions)"{--detect_fp_exceptions==,--no_detect_fp_exceptions=}"[Enables/disables floating point exceptions traps.]:boolean value:_boost_test_detect_fp_exceptions"
+  "--list_labels=[Lists all available labels.]:boolean value:_boost_test_list_labels"
+  "(--result_code --no_result_code -c)"{--result_code=,--no_result_code=,-c}"[Disables test modules's result code generation.]:boolean value:_boost_test_result_code"
+  "--save_pattern=[Allows to switch between saving or matching test pattern file.]:boolean value]:_boost_test_save_pattern"
+  "(--show_progress -p)"{--show_progress=,-p}"[Turns on progress display.]:boolean value:_boost_test_show_progress"
+  "(--no_use_alt_stack --use_alt_stack)"{--no_use_alt_stack=,--use_alt_stack=}"[Turns on/off usage of an alternative stack for signal handling.]:boolean value:_boost_test_use_alt_stack"
+  "--version[Prints Boost.Test version and exits.]:boolean value:_boost_test_version"
+  "(--wait_for_debugger -w)"{--wait_for_debugger=,-w}"[Forces test module to wait for button to be pressed before starting test run.]:boolean value:_boost_test_wait_for_debugger"
+  "-?[Short message explaining usage of Boost.Test parameters.]:boolean value:_boost_test_usage"
+
+
+
+
+
+  The program 'TestSelection' is a Boost.test module containing unit tests.
+
+  Usage
+    TestSelection [Boost.Test argument]... [-- [custom test module argument]...]
+
+  Use
+      TestSelection --help
+  or  TestSelection --help=<parameter name>
+  for detailed help on Boost.Test parameters.
+
+
+  Command line flags:
+   The command line flags of Boost.Test are listed below. All parameters are
+   optional. You can specify parameter value either as a command line argument or
+   as a value of its corresponding environment variable. If a flag is specified as
+   a command line argument and an environment variable at the same time, the
+   command line takes precedence. The command line argument support name guessing,
+   and works with shorter names as long as those are not ambiguous.
+
+   All the arguments after the '--' are ignored by Boost.Test.
+
+  Environment variables:
+   Every argument listed below may also be set by a corresponding
+   environmentvariable. For an argument '--argument_x=<value>', the corresponding
+   environment variable is 'BOOST_TEST_ARGUMENT_X=value
+
+  The following parameters are supported:
+
+  break_exec_path
+    For the exception safety testing allows to break at specific execution path.
+    --break_exec_path=<value>
+
+
+  detect_memory_leaks
+    Turns on/off memory leaks detection (optionally breaking on specified alloc
+    order number).
+    --detect_memory_leaks[=<alloc order number>]
+
+  help
+    Help for framework parameters.
+    --help[=<parameter name>]
+
+  list_content
+    Lists the content of test tree - names of all test suites and test cases.
+    --list_content[=<HRF|DOT>]
+
+  log_format
+    Specifies log format.
+    --log_format=<HRF|CLF|XML|JUNIT>
+    -f <HRF|CLF|XML|JUNIT>
+
+  log_level
+    Specifies the logging level of the test execution.
+    --log_level=<all|success|test_suite|unit_scope|message|warning|error|cpp_exception|system_error|fatal_error|nothing>
+    -l <all|success|test_suite|unit_scope|message|warning|error|cpp_exception|system_error|fatal_error|nothing>
+
+  log_sink
+    Specifies log sink: stdout (default), stderr or file name.
+    --log_sink=<stderr|stdout|file name>
+    -k <stderr|stdout|file name>
+
+  logger
+    Specifies log level and sink for one or several log format
+    --logger=log_format,log_level,log_sink[:log_format,log_level,log_sink]
+
+  output_format
+    Specifies output format (both log and report).
+    --output_format=<HRF|CLF|XML>
+    -o <HRF|CLF|XML>
+
+  random
+    Allows to switch between sequential and random order of test units execution.
+    Optionally allows to specify concrete seed for random number generator.
+    --random[=<seed>]
+
+  report_format
+    Specifies the test report format.
+    --report_format=<HRF|CLF|XML>
+    -m <HRF|CLF|XML>
+
+  report_level
+    Specifies test report level.
+    --report_level=<confirm|short|detailed|no>
+    -r <confirm|short|detailed|no>
+
+  report_memory_leaks_to
+    File where to report memory leaks to.
+    --report_memory_leaks_to=<file name>
+
+  report_sink
+    Specifies report sink: stderr(default), stdout or file name.
+    --report_sink=<stderr|stdout|file name>
+    -e <stderr|stdout|file name>
+
+
+  run_test
+    Filters which tests to execute.
+    --run_test=<test unit filter>
+    -t <test unit filter>
+
