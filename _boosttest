@@ -16,7 +16,7 @@ _booleans() {
   _describe -t booleans 'boolean' booleans
 }
 _sinks() {
-  local -a sinks; sinks=("stderr" "stdout" "file name")
+  local -a sinks; sinks=("stderr" "stdout" "<filename>")
   _describe -t sinks 'sinks' sinks
 }
 _hcx() {
@@ -57,10 +57,12 @@ _boost_test_list_content () {
   _describe -t hdformats 'format (optional)' formats
 }
 _boost_test_logger() {
-  (( remainder=${#${words[$CURRENT]//[^,]}} % 3 ))
+  (( commas=${#${words[$CURRENT]//[^,]}} ))
+  (( remainder=$commas % 3 ))
+  (( $commas >= 3 )) && _message "may stop now"
+  (( $commas >= 1 )) && compset -P '*,'
   case $remainder in
     0)
-      (( ${#${words[$CURRENT]//[^,]}} >= 3 )) && _message "may stop now"
       local -a formats; formats=("HRF" "CLF" "XML" "JUNIT")
       _describe -t hcxjformats 'formats' formats -S ','
       ;;
@@ -70,7 +72,7 @@ _boost_test_logger() {
       _describe -t loglevels 'log levels' loglevels -S ','
       ;;
     2)
-      local -a sinks; sinks=("stderr" "stdout" "file name")
+      local -a sinks; sinks=("stderr" "stdout" "<filename>")
       _describe -t sinks 'sinks' sinks -S ','
       ;;
   esac
@@ -113,7 +115,7 @@ _arguments \
   "(--no_use_alt_stack --use_alt_stack)"{--no_use_alt_stack=,--use_alt_stack=}"[Turns on/off usage of an alternative stack for signal handling.]:boolean value:_boost_test_use_alt_stack" \
   "--version[Prints Boost.Test version and exits.]:boolean value:_boost_test_version" \
   "(--wait_for_debugger -w)"{--wait_for_debugger=,-w}"[Forces test module to wait for button to be pressed before starting test run.]:boolean value:_boost_test_wait_for_debugger" \
-  "-?[Short message explaining usage of Boost.Test parameters.]:boolean value:_boost_test_usage"
+  "-?[Short message explaining usage of Boost.Test parameters.]:boolean value:_boost_test_usage" \
   "--break_exec_path=[For the exception safety testing allows to break at specific execution path.]:value:_boost_test_break_exec_path" \
   "--detect_memory_leaks=[Turns on/off memory leaks detection (optionally breaking on specified alloc order number).]:alloc order number:_boost_test_detect_memory_leaks" \
   "(--log_level -l)"{--log_level=,-l}"[Specifies the logging level of the test execution.]:log level:_boost_test_log_level" \
