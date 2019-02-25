@@ -14,3 +14,7 @@ tab completion for [Boost.Test](https://www.boost.org/doc/libs/1_69_0/libs/test/
 Contributions are welcome.
 
 This may be (but is not restricted to), bug reports, bug fixes, additions of missing functions.
+
+## Maintenance
+
+For reference, a record of the `--help` message of a Boost.Test application is kept in `reference.txt`, to compare to newer versions of Boost.Test.
