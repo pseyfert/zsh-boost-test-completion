@@ -107,31 +107,31 @@ if [[ "$service" = -value-* ]]; then
 fi
 
 _arguments \
-  "(--no_catch_system_errors --catch_system_errors -s)"{--no_catch_system_errors=-,--catch_system_errors=-,-s}"[Allows to switch between catching and ignoring system errors (signals).]:boolean value:_boost_test_catch_system_errors" \
-  "(--color_output --no_color_output -x)"{--color_output=-,--no_color_output=-,-x}"[Enables color output of the framework log and report messages.]:boolean value:_boost_test_color_output" \
-  "(--auto_start_dbg -d)"{--auto_start_dbg=-,-d}"[Automatically attaches debugger in case of system level failure (signal).]:boolean value:_boost_test_auto_start_dbg" \
-  "(--build_info -i)"{--build_info=-,-i}"[Displays library build information.]:boolean value:_boost_test_build_info" \
-  "(--detect_fp_exceptions --no_detect_fp_exceptions)"{--detect_fp_exceptions=-,--no_detect_fp_exceptions=-}"[Enables/disables floating point exceptions traps.]:boolean value:_boost_test_detect_fp_exceptions" \
+  "(--no_catch_system_errors --catch_system_errors -s)"{--no_catch_system_errors=-,--catch_system_errors=-,-s}"[Allows to switch between catching and ignoring system errors (signals).]::boolean value:_boost_test_catch_system_errors" \
+  "(--color_output --no_color_output -x)"{--color_output=-,--no_color_output=-,-x}"[Enables color output of the framework log and report messages.]::boolean value:_boost_test_color_output" \
+  "(--auto_start_dbg -d)"{--auto_start_dbg=-,-d}"[Automatically attaches debugger in case of system level failure (signal).]::boolean value:_boost_test_auto_start_dbg" \
+  "(--build_info -i)"{--build_info=-,-i}"[Displays library build information.]::boolean value:_boost_test_build_info" \
+  "(--detect_fp_exceptions --no_detect_fp_exceptions)"{--detect_fp_exceptions=-,--no_detect_fp_exceptions=-}"[Enables/disables floating point exceptions traps.]::boolean value:_boost_test_detect_fp_exceptions" \
   "--list_labels=-[Lists all available labels.]:boolean value:_boost_test_list_labels" \
-  "(--result_code --no_result_code -c)"{--result_code=-,--no_result_code=-,-c}"[Disables test modules's result code generation.]:boolean value:_boost_test_result_code" \
-  "--save_pattern=-[Allows to switch between saving or matching test pattern file.]:boolean value]:_boost_test_save_pattern" \
-  "(--show_progress -p)"{--show_progress=-,-p}"[Turns on progress display.]:boolean value:_boost_test_show_progress" \
-  "(--no_use_alt_stack --use_alt_stack)"{--no_use_alt_stack=-,--use_alt_stack=-}"[Turns on/off usage of an alternative stack for signal handling.]:boolean value:_boost_test_use_alt_stack" \
-  "--version-[Prints Boost.Test version and exits.]:boolean value:_boost_test_version" \
-  "(--wait_for_debugger -w)"{--wait_for_debugger=-,-w}"[Forces test module to wait for button to be pressed before starting test run.]:boolean value:_boost_test_wait_for_debugger" \
-  "-\\\?[Short message explaining usage of Boost.Test parameters.]:boolean value:_boost_test_usage" \
+  "(--result_code --no_result_code -c)"{--result_code=-,--no_result_code=-,-c}"[Disables test modules's result code generation.]::boolean value:_boost_test_result_code" \
+  "--save_pattern=-[Allows to switch between saving or matching test pattern file.]::boolean value]:_boost_test_save_pattern" \
+  "(--show_progress -p)"{--show_progress=-,-p}"[Turns on progress display.]::boolean value:_boost_test_show_progress" \
+  "(--no_use_alt_stack --use_alt_stack)"{--no_use_alt_stack=-,--use_alt_stack=-}"[Turns on/off usage of an alternative stack for signal handling.]::boolean value:_boost_test_use_alt_stack" \
+  "--version-[Prints Boost.Test version and exits.]::boolean value:_boost_test_version" \
+  "(--wait_for_debugger -w)"{--wait_for_debugger=-,-w}"[Forces test module to wait for button to be pressed before starting test run.]::boolean value:_boost_test_wait_for_debugger" \
+  "-\\?[Short message explaining usage of Boost.Test parameters.]::boolean value:_boost_test_usage" \
   "--break_exec_path=-[For the exception safety testing allows to break at specific execution path.]:value:_boost_test_break_exec_path" \
-  "--detect_memory_leaks=-[Turns on/off memory leaks detection (optionally breaking on specified alloc order number).]:alloc order number:_boost_test_detect_memory_leaks" \
+  "--detect_memory_leaks=-[Turns on/off memory leaks detection (optionally breaking on specified alloc order number).]::alloc order number:_boost_test_detect_memory_leaks" \
   "(--log_level -l)"{--log_level=-,-l}"[Specifies the logging level of the test execution.]:log level:_boost_test_log_level" \
   "(--log_sink -k)"{--log_sink=-,-k}"[Specifies log sink]:sink:_boost_test_log_sink" \
   "(-e --report_sink)"{-e,--report_sink=}"[Specifies report sink]:sink:_boost_test_report_sink" \
   "(--output_format -o)"{--output_format=-,-o}"[Specifies output format (both log and report).]:format:_boost_test_output_format" \
   "(--report_format -m)"{--report_format=-,-m}"[Specifies the test report format.]:format:_boost_test_report_format" \
   "(--log_format -f)"{--log_format=-,-f}"[Specifies log format.]:format:_boost_test_log_format" \
-  "--help=-[Help for framework parameters.]:parameter name:_boost_test_help" \
-  "--list_content=-[Lists the content of test tree - names of all test suites and test cases.]:format:_boost_test_list_content" \
+  "--help=-[Help for framework parameters.]::parameter name:_boost_test_help" \
+  "--list_content=-[Lists the content of test tree - names of all test suites and test cases.]::format:_boost_test_list_content" \
   "--logger=-[Specifies log level and sink for one or several log format]:format,level,sink:_boost_test_logger" \
-  "--random=-[Allows to switch between sequential and random order of test units execution. Optionally allows to specify concrete seed for random number generator.]:seed:_boost_test_random" \
+  "--random=-[Allows to switch between sequential and random order of test units execution. Optionally allows to specify concrete seed for random number generator.]::seed:_boost_test_random" \
   "(--report_level -r)"{--report_level=-,-r}"[Specifies test report level.]:report level:_boost_test_report_level" \
   "--report_memory_leaks_to=-[File where to report memory leaks to.]:file name:_boost_test_report_memory_leaks_to" \
   "(--run_test -t)"{--run_test=-,-t}"[Filters which tests to execute.]:test unit filter:_boost_test_run_test"
