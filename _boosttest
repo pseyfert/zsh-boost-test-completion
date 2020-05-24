@@ -114,7 +114,7 @@ _arguments \
   "(--detect_fp_exceptions --no_detect_fp_exceptions)"{--detect_fp_exceptions=-,--no_detect_fp_exceptions=-}"[Enables/disables floating point exceptions traps.]::boolean value:_boost_test_detect_fp_exceptions" \
   "--list_labels=-[Lists all available labels.]:boolean value:_boost_test_list_labels" \
   "(--result_code --no_result_code -c)"{--result_code=-,--no_result_code=-,-c}"[Disables test modules's result code generation.]::boolean value:_boost_test_result_code" \
-  "--save_pattern=-[Allows to switch between saving or matching test pattern file.]::boolean value]:_boost_test_save_pattern" \
+  "--save_pattern=-[Allows to switch between saving or matching test pattern file.]::boolean value:_boost_test_save_pattern" \
   "(--show_progress -p)"{--show_progress=-,-p}"[Turns on progress display.]::boolean value:_boost_test_show_progress" \
   "(--no_use_alt_stack --use_alt_stack)"{--no_use_alt_stack=-,--use_alt_stack=-}"[Turns on/off usage of an alternative stack for signal handling.]::boolean value:_boost_test_use_alt_stack" \
   "--version-[Prints Boost.Test version and exits.]::boolean value:_boost_test_version" \
